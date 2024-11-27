@@ -23,6 +23,7 @@ proyecto-GIS
 - **GeoDa**: Para crear mapas espaciales y realizar análisis como Índices de Moran y LISA.
 - **Git** y **GitHub**: Para el control de versiones y la colaboración.
 
+- Se utilizó una base de datos precargada de GeoDA [Oaxaca Development](https://geodacenter.github.io/data-and-lab/Oaxaca-Development/)
 ---
 
 ## 🚀 Cómo Usar este Proyecto
