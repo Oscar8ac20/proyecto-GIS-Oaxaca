@@ -9,3 +9,5 @@
 # Archivos temporales
 *.log
 *.tmp
+*.prj
+

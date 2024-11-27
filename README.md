@@ -14,6 +14,20 @@ proyecto-GIS
   - output      # Resultados finales (PDF del informe, tablas procesadas)
   - scripts     # Archivo principal de R Markdown
 
+
+### 📂 Datos
+
+La base de datos incluye los siguientes archivos en la carpeta `datos/`:
+- `oaxaca.shp`: Shapefile de los municipios de Oaxaca.
+- `oaxaca.dbf`: Atributos asociados al shapefile.
+- `oaxaca.prj`: Información de proyección geográfica.
+- `oaxaca.geojson`: Archivo GeoJSON con los datos espaciales.
+- `Oaxaca Census Variables Master Data Dictionary.docx`: Diccionario de datos del censo.
+- `mexico_poverty_codebook.xlsx`: Código de variables relacionadas con pobreza.
+
+### Descripción general
+Esta base de datos contiene información geográfica y socioeconómica de los municipios de Oaxaca, que será utilizada para realizar análisis espaciales y visualizar cómo influye la educación en los municipios vecinos.
+
 ---
 
 ## 🛠️ Herramientas Utilizadas
@@ -39,3 +53,4 @@ proyecto-GIS
 2. Clonar este repositorio:
    ```bash
    git clone https://github.com/TU_USUARIO/proyecto-GIS-Oaxaca.git
+
