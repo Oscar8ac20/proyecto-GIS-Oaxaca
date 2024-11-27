@@ -1,0 +1,11 @@
+# Archivos temporales de R
+*.RData
+*.rdb
+*.rds
+
+# Configuración de RStudio
+.Rproj.user/
+
+# Archivos temporales
+*.log
+*.tmp
