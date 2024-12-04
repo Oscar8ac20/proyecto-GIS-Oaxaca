@@ -3,25 +3,156 @@ title: "Análisis espacial de la educación en Oaxaca"
 author: "Oscar Gustavo Ochoa Castañeda"
 date: "`r Sys.Date()`"
 output: pdf_document
+editor_options: 
+  markdown: 
+    wrap: 72
 ---
-
 
 ### **Abstract**
 
-Este análisis espacial explora la hipótesis de que el nivel educativo de un municipio influye positivamente en el nivel educativo y el desarrollo económico de sus municipios vecinos, generando un efecto de contagio educativo a través de la proximidad geográfica. Investigaciones previas han identificado la existencia de "spillovers" o derrames espaciales educativos y económicos entre regiones cercanas.
+Este análisis espacial explora la hipótesis de que el nivel educativo de
+un municipio influye positivamente en el nivel educativo y el desarrollo
+económico de sus municipios vecinos, generando un efecto de contagio
+educativo a través de la proximidad geográfica. Investigaciones previas
+han identificado la existencia de "spillovers" o derrames espaciales
+educativos y económicos entre regiones cercanas.
 
-Un ejemplo notable es el estudio realizado en China por Zhang et al. ([ScienceDirect](https://www.sciencedirect.com/science/article/abs/pii/S0166046215001118?via%3Dihub)), que demuestra que el gasto en educación superior no solo beneficia directamente a la región receptora, sino que sus efectos positivos se extienden a las áreas circundantes. En este trabajo, utilizamos datos municipales de Oaxaca, México, y aplicamos técnicas de análisis espacial para probar la hipótesis planteada.
+Un ejemplo notable es el estudio realizado en China por Zhang et al.
+([ScienceDirect](https://www.sciencedirect.com/science/article/abs/pii/S0166046215001118?via%3Dihub)),
+que demuestra que el gasto en educación superior no solo beneficia
+directamente a la región receptora, sino que sus efectos positivos se
+extienden a las áreas circundantes. En este trabajo, utilizamos datos
+municipales de Oaxaca, México, y aplicamos técnicas de análisis espacial
+para probar la hipótesis planteada.
 
-Los resultados esperan aportar evidencia sobre los efectos de derrame educativos, ofreciendo una base empírica para el diseño de políticas públicas más equitativas y efectivas, orientadas al desarrollo regional sostenible.
+Los resultados esperan aportar evidencia sobre los efectos de derrame
+educativos, ofreciendo una base empírica para el diseño de políticas
+públicas más equitativas y efectivas, orientadas al desarrollo regional
+sostenible.
 
----
+------------------------------------------------------------------------
 
 ### **Introducción**
 
-La educación desempeña un papel fundamental en el desarrollo del capital humano, que a su vez constituye un motor esencial para el crecimiento económico sostenible. Más allá de sus beneficios directos en términos de productividad y bienestar social, la educación genera efectos que trascienden fronteras geográficas, influyendo en las comunidades vecinas mediante lo que se conoce como "spillovers" o derrames espaciales educativos.
+La educación desempeña un papel fundamental en el desarrollo del capital
+humano, que a su vez constituye un motor esencial para el crecimiento
+económico sostenible. Más allá de sus beneficios directos en términos de
+productividad y bienestar social, la educación genera efectos que
+trascienden fronteras geográficas, influyendo en las comunidades vecinas
+mediante lo que se conoce como "spillovers" o derrames espaciales
+educativos.
 
-El estado de Oaxaca es clave para el éxito del Corredor Interoceánico del Istmo de Tehuantepec, uno de los proyectos más ambiciosos del último siglo en términos de comercio internacional. Este proyecto representa una gran oportunidad para el desarrollo de la región, pero su éxito depende de contar con un capital humano especializado que pueda satisfacer las necesidades del corredor. Idealmente, este capital humano debería provenir de la propia región, lo que subraya la importancia de entender la dinámica del alcance educativo en estas áreas y cómo optimizar su impacto mediante efectos de cascada ("spillovers") con el uso eficiente de recursos.
+El estado de Oaxaca es clave para el éxito del Corredor Interoceánico
+del Istmo de Tehuantepec, uno de los proyectos más ambiciosos del último
+siglo en términos de comercio internacional. Este proyecto representa
+una gran oportunidad para el desarrollo de la región, pero su éxito
+depende de contar con un capital humano especializado que pueda
+satisfacer las necesidades del corredor. Idealmente, este capital humano
+debería provenir de la propia región, lo que subraya la importancia de
+entender la dinámica del alcance educativo en estas áreas y cómo
+optimizar su impacto mediante efectos de cascada ("spillovers") con el
+uso eficiente de recursos.
 
-Oaxaca presenta desigualdades educativas significativas, junto con condiciones socioeconómicas y geográficas altamente heterogéneas. Este estudio busca responder a la pregunta: **¿Cómo influye el nivel educativo de un municipio en los municipios circundantes?** Para abordar esta cuestión, se emplearon datos municipales de Oaxaca y se aplicaron métodos de análisis espacial, incluyendo índices de autocorrelación espacial y modelos econométricos espaciales.
+Oaxaca presenta desigualdades educativas significativas, junto con
+condiciones socioeconómicas y geográficas altamente heterogéneas. Este
+estudio busca responder a la pregunta: **¿Cómo influye el nivel
+educativo de un municipio en los municipios circundantes?** Para abordar
+esta cuestión, se emplearon datos municipales de Oaxaca y se aplicaron
+métodos de análisis espacial, incluyendo índices de autocorrelación
+espacial y modelos econométricos espaciales.
 
-Nuestros hallazgos no solo ofrecerán evidencia empírica sobre los efectos de derrame educativos, sino que también proporcionarán información valiosa para el diseño de políticas públicas que promuevan la equidad educativa y el desarrollo regional sostenible, apoyando a Oaxaca en su transición hacia un futuro de mayor inclusión y prosperidad.
+Nuestros hallazgos no solo ofrecerán evidencia empírica sobre los
+efectos de derrame educativos, sino que también proporcionarán
+información valiosa para el diseño de políticas públicas que promuevan
+la equidad educativa y el desarrollo regional sostenible, apoyando a
+Oaxaca en su transición hacia un futuro de mayor inclusión y
+prosperidad.
+
+------------------------------------------------------------------------
+
+### Análisis
+
+Para esta investigación utilizaremos una base de datos pre-cargada del
+Software GeoDA [Oaxaca
+Development](https://geodacenter.github.io/data-and-lab/Oaxaca-Development/),
+y como herramientas el mismo software GeoDA, de donde se hicieron la
+mayoría de los mapas, y con lenguaje R limpieza de la base de datos.
+
+#### Hipótesis
+
+El nivel educativo en un municipio tiene un impacto positivo en el nivel
+educativo y el desarrollo económico de los municipios vecinos.
+
+#### Base de datos
+
+Primero se cargó la base de datos para poder hacerle la limpieza
+correspondiente y utilizar nuestras variables de interés
+
+```{r Paqueterías, message=FALSE}
+library(tidyverse)
+library(sf)
+```
+
+```{r Carga de base de datos, message=FALSE, warning=FALSE, echo=TRUE}
+ruta_shp <- "~/proyecto-GIS/datos"
+oaxaca_data <- st_read(ruta_shp)
+```
+
+La base de datos cuenta con `r ncol(oaxaca_data)` variables, por lo que
+solamente nos vamos a enfocar en unas cuantas del año 2020, que son:
+
+Variables de interés(Proxy educación):
+
+-   Población mayor o igual de 18 años con educación superior
+
+-    Promedio de grados escolares
+
+Variables dependientes:
+
+-   Población mayor o igual de 18 años con educación superior en vecinos
+
+-   Población con empleo
+
+-   Población económicamente activa
+
+Variables de Control:
+
+-   Población total
+
+-   Población no económicamente activa
+
+-   Acceso a servicios básicos (por si la infraestructura influye en el
+    desarrollo o la educación)
+
+```{r Limpieza datos}
+oaxaca_clean_d <- oaxaca_data %>% 
+            select(ID,
+                  Shape_Leng,
+                  Shape_Area,
+                  mun,
+                  mun_name,
+                  District,
+                  Region,
+                  ALTID,
+                  P18HI20, #población mayor a 18 años con educación superior
+                  GRAD20,  #promedio de grados escolares
+                  PJOB20,  #población con empleo
+                  PEA20,   #población economicamente activa
+                  PTOT20, #población total
+                  PIEA20, #población no económicamente activa
+                  geometry)
+
+st_write(oaxaca_clean_d, "~/proyecto-GIS/datos/oaxaca_clean_d.shp", delete_layer = T)
+```
+Se guardaron los datos en un nuevo shape file para poder trabajar con ellos. 
+
+#### Mapa de Oaxaca
+
+Con los datos se puede obtiene un lienzo sobre el cual trabajar: 
+```{r Mapa lienzo}
+ggplot(data = oaxaca_clean_d)+
+  geom_sf(fill = "white", color = "black")+
+  labs(title = "Mapa Oaxaca",
+       caption = "Fuente: GeoDa Center for Spatial Analysis")
+```
+
