@@ -1,0 +1,27 @@
+---
+title: "Análisis espacial de la educación en Oaxaca"
+author: "Oscar Gustavo Ochoa Castañeda"
+date: "`r Sys.Date()`"
+output: pdf_document
+---
+
+
+### **Abstract**
+
+Este análisis espacial explora la hipótesis de que el nivel educativo de un municipio influye positivamente en el nivel educativo y el desarrollo económico de sus municipios vecinos, generando un efecto de contagio educativo a través de la proximidad geográfica. Investigaciones previas han identificado la existencia de "spillovers" o derrames espaciales educativos y económicos entre regiones cercanas.
+
+Un ejemplo notable es el estudio realizado en China por Zhang et al. ([ScienceDirect](https://www.sciencedirect.com/science/article/abs/pii/S0166046215001118?via%3Dihub)), que demuestra que el gasto en educación superior no solo beneficia directamente a la región receptora, sino que sus efectos positivos se extienden a las áreas circundantes. En este trabajo, utilizamos datos municipales de Oaxaca, México, y aplicamos técnicas de análisis espacial para probar la hipótesis planteada.
+
+Los resultados esperan aportar evidencia sobre los efectos de derrame educativos, ofreciendo una base empírica para el diseño de políticas públicas más equitativas y efectivas, orientadas al desarrollo regional sostenible.
+
+---
+
+### **Introducción**
+
+La educación desempeña un papel fundamental en el desarrollo del capital humano, que a su vez constituye un motor esencial para el crecimiento económico sostenible. Más allá de sus beneficios directos en términos de productividad y bienestar social, la educación genera efectos que trascienden fronteras geográficas, influyendo en las comunidades vecinas mediante lo que se conoce como "spillovers" o derrames espaciales educativos.
+
+El estado de Oaxaca es clave para el éxito del Corredor Interoceánico del Istmo de Tehuantepec, uno de los proyectos más ambiciosos del último siglo en términos de comercio internacional. Este proyecto representa una gran oportunidad para el desarrollo de la región, pero su éxito depende de contar con un capital humano especializado que pueda satisfacer las necesidades del corredor. Idealmente, este capital humano debería provenir de la propia región, lo que subraya la importancia de entender la dinámica del alcance educativo en estas áreas y cómo optimizar su impacto mediante efectos de cascada ("spillovers") con el uso eficiente de recursos.
+
+Oaxaca presenta desigualdades educativas significativas, junto con condiciones socioeconómicas y geográficas altamente heterogéneas. Este estudio busca responder a la pregunta: **¿Cómo influye el nivel educativo de un municipio en los municipios circundantes?** Para abordar esta cuestión, se emplearon datos municipales de Oaxaca y se aplicaron métodos de análisis espacial, incluyendo índices de autocorrelación espacial y modelos econométricos espaciales.
+
+Nuestros hallazgos no solo ofrecerán evidencia empírica sobre los efectos de derrame educativos, sino que también proporcionarán información valiosa para el diseño de políticas públicas que promuevan la equidad educativa y el desarrollo regional sostenible, apoyando a Oaxaca en su transición hacia un futuro de mayor inclusión y prosperidad.
