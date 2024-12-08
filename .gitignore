@@ -1,0 +1,8 @@
+# Ignorar archivos grandes y temporales
+*.shp
+*.tmp
+*.log
+*.rds
+*.rdata
+
+*.shp

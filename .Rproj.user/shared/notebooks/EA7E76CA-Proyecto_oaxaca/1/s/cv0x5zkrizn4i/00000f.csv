@@ -1,0 +1,9 @@
+"0","ggplot(oaxaca_clean_d, aes(x = PTOT20)) +"
+"0","  geom_histogram(binwidth = 5000, fill = ""purple"", color = ""black"", alpha = 0.7) +"
+"0","  labs(title = ""Distribución de la Población Total"","
+"0","       x = ""Población Total"","
+"0","       y = ""Número de Municipios"") +"
+"0","  theme_minimal()"
+"2","Error in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y,  : 
+  invalid input 'N�mero de Municipios' in 'utf8towcs'
+"
